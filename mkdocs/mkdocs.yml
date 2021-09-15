@@ -2,10 +2,10 @@ site_name: EUCLID / Hyperelasticity
 site_url: https://pyeuclid.github.io/
 nav:
     - Home: index.md
-    - Contact: contact.md
     - Publication: publication.md
     - Code/Data: code_data.md
     - Example: example_hyperelasticity.md
+    - Contact: contact.md
     - Code:
         - config: code/config.md
         - dataDefinitions: code/dataDefinitions.md
