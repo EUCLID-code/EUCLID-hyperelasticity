@@ -1,5 +1,5 @@
 -------------------- Data --------------------
-../FEM_data/plate_hole_1k_NeoHookeanJ2
+../FEM_data/plate_hole_1k/plate_hole_1k_NeoHookeanJ2
 Load Steps: [10, 20, 30, 40]
 Additional Noise Level: 0.0001
 -------------------- Hyperparameters --------------------

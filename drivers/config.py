@@ -18,35 +18,28 @@ str_model = 'NeoHookeanJ2'
 #=====================================================================
 # MESH:
 #=====================================================================
-str_mesh = 'plate_hole_1k_'
-# str_mesh = 'plate_hole_60k_'
+str_mesh = 'plate_hole_1k'
+# str_mesh = 'plate_hole_60k'
 
 #=====================================================================
 # NOISE LEVEL:
 #=====================================================================
 noiseLevelData = '0'
-# noiseLevelData = '1e-4'
-# noiseLevelData = '1e-3'
 
 if noiseLevelData == '0':
-    str_noise = 'FEM_data/' # no noise
-elif noiseLevelData == '1e-4':
-    str_noise = 'kr_denoisedData/denoised_60k_to_60k_noise=0.0001/'
-elif noiseLevelData == '1e-3':
-    str_noise = 'kr_denoisedData/denoised_60k_to_60k_noise=0.001/'
+    str_noise = str_mesh # no noise
+elif noiseLevelData == '1e-4' and str_mesh == 'plate_hole_60k':
+    str_noise = 'denoised_60k_to_60k_noise=0.0001'
+elif noiseLevelData == '1e-3' and str_mesh == 'plate_hole_60k':
+    str_noise = 'denoised_60k_to_60k_noise=0.001'
 
 # additional noise
 noiseLevel = 0.0001
 
 #=====================================================================
-# DATA PATH CLUSTER:
+# DATA PATH:
 #=====================================================================
-# femDataPath = '/cluster/scratch/mflaschel/data_08_25/' + str_noise + str_mesh + str_model
-
-#=====================================================================
-# DATA PATH LOCAL:
-#=====================================================================
-femDataPath = '../' + str_noise + str_mesh + str_model
+femDataPath = '../FEM_data/' + str_noise + '/' + str_mesh + '_' + str_model
 
 #=====================================================================
 # LOAD STEPS:
