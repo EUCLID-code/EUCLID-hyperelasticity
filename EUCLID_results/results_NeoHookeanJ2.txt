@@ -1,0 +1,30 @@
+-------------------- Data --------------------
+../FEM_data/plate_hole_1k_NeoHookeanJ2
+Load Steps: [10, 20, 30, 40]
+Additional Noise Level: 0.0001
+-------------------- Hyperparameters --------------------
+Balance Factor: 100
+Lp-Norm Penalty Factor (initial): 0.0001
+Lp-Norm Penalty Factor: 0.0125
+p: 0.25
+Max. Number Penalty Increments: 5
+Factor Penalty Increments: 5
+Number Initial Guesses: 1
+Max. Number Iterations: 200
+Lowest Cost: 0.151321644352581
+Lowest Cost Guess Identifier: 0
+Threshold (Fixed-Point Iteration): 1e-06
+Threshold: 0.01
+-------------------- Results --------------------
+Theta (Lp-Norm Penalty + Threshold): 
+[0.50052861 0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         1.49892849
+ 0.         0.         0.         0.         0.         0.
+ 0.        ]
+
+
+

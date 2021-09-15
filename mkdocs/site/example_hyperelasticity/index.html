@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://pyeuclid.github.io/example_hyperelasticity/">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Example - EUCLID / Hyperelasticity</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Example";
+    var mkdocs_page_input_path = "example_hyperelasticity.md";
+    var mkdocs_page_url = "/example_hyperelasticity/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> EUCLID / Hyperelasticity</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../contact/">Contact</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../publication/">Publication</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../code_data/">Code/Data</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Example</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#data-and-parameters">Data and Parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#discovery">Discovery</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#results">Results</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Code</span></p>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../code/config/">config</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code/dataDefinitions/">dataDefinitions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code/features/">features</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code/helper/">helper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code/loadFemData/">loadFemData</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code/main/">main</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code/models/">models</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code/models_Lp/">models_Lp</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code/models_requirements/">models_requirements</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code/models_weak/">models_weak</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../code/utilities/">utilities</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">EUCLID / Hyperelasticity</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Example</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="example">Example</h1>
+<p>It follows a step-by-step description of the implemented algorithm for an exemplary dataset.
+In particular, EUCLID (Efficient Unsupervised Constitutive Law Identification &amp; Discovery) is applied to displacement and reaction force data that were generated based on the Neo-Hookean material model NH2.
+The goal is to use the data to discover the material model, without knowing its specific mathematical form a priori.</p>
+<h2 id="data-and-parameters">Data and Parameters</h2>
+<p>The input data for EUCLID and the parameters for the optimization process are defined in <code>config.py</code>.
+First, the material model based on which the data were generated, the mesh, the load steps and the noise level are specified.</p>
+<pre><code class="language-Python">str_model = 'NeoHookeanJ2'
+str_mesh = 'plate_hole_1k_'
+loadsteps = [10,20,30,40]
+noiseLevelData = '0'
+noiseLevel = 0.0001
+</code></pre>
+<p>Here, <code>noiseLevelData</code> is set to zero meaning that we want to load data that has not yet been corrupted by noise
+and <code>noiseLevel</code> is set to be greater than zero as artificial noise should be added to that data.
+We have to make sure that <code>femDataPath</code> describes the correct path pointing to the finite element data.</p>
+<p>After specifying which data to use, the hyperparameters for EUCLID are chosen.</p>
+<pre><code class="language-Python">balance = 100
+penaltyLp = 1e-4
+p = 1.0/4.0
+factorIncrements = 5
+numGuesses = 1
+threshold = 1e-2
+</code></pre>
+<p>Setting <code>balance = 100</code> increases the influence of boundary data on the objective function
+and <code>penaltyLp</code> defines the initial value of the penalty factor in front of the Lp-regularization term added to the objective function.
+The latter parameter will be successively increased by the factor <code>factorIncrements</code> until a physically admissible material model is found.
+For this example, we choose only one initial guess for the minimization probem
+and the threshold below which material parameters should be discarded is defined as <code>threshold = 1e-2</code>. </p>
+<h2 id="discovery">Discovery</h2>
+<p>Executing <code>main_Lp.py</code> starts the material model discovery process.
+The parameters defined in <code>config.py</code> are loaded as <code>import config as c</code>.
+A loop over all load steps is defined and for each load step, the finite element data is loaded and perturbed by the specified noise.</p>
+<pre><code class="language-Python">for loadstep in c.loadsteps:
+    data = loadFemData(c.femDataPath+'/'+str(loadstep), AD=True, noiseLevel = c.noiseLevel, noiseType = 'displacement')
+    datasets.append(data)
+</code></pre>
+<p>The left hand side <code>LHS</code> and right hand side <code>RHS</code> of the system of linear equations, which are obtained from differentiating the minimization function (without Lp-regularization), are assembled.
+Finally, the material model is discovered from the data by executing:</p>
+<pre><code class="language-Python">theta = applyPenaltyLpIteration(datasets,LHS,RHS,c)
+</code></pre>
+<h2 id="results">Results</h2>
+<p>In <code>applyPenaltyLpIteration</code> the fixed-point iteration is applied for the initial penalty factor in front of the sparsity promoting Lp-regularization term.
+As the initial value has been choosen negligibly small, the obtained solution vector for the material parameters <code>theta</code> is dense, i.e., it contains a large number of nonzero entries.</p>
+<pre><code class="language-Matlab">-----------------------------------------------------
+Apply Lp-norm penalty.
+Lp-norm penalty factor:  0.0001
+Lp-norm: p= 0.25
+Number of initial guesses: 1
+
+Solution with the lowest cost:
+[ 6.08591003e-01 -1.26556172e+01 -1.50304242e+00  3.47039792e+00
+  0.00000000e+00 -8.40926870e-01  4.26303110e+00 -6.44342608e+00
+  2.68558116e+00  1.91942291e-01 -5.80249192e-01  0.00000000e+00
+  1.13330467e+00 -7.01748020e-01 -8.85663806e-03  0.00000000e+00
+  7.39918129e-02 -4.10729435e-02 -1.23457739e-01  9.60345278e-02
+  0.00000000e+00  9.97033677e-04  0.00000000e+00 -1.09769271e-02
+  1.66016891e-02 -3.06059710e-03 -3.42983131e-03 -1.06609625e-05
+  7.32603777e-05 -1.98700714e-04  0.00000000e+00  1.03872040e-03
+ -1.85894059e-03  1.16813894e-03 -2.13678851e-04  1.50478155e+00
+  0.00000000e+00 -1.44416532e-01  7.52157815e-01 -1.03935826e+00
+  5.20008688e-01 -8.75636549e-02  3.75995295e+01]
+-----------------------------------------------------
+</code></pre>
+<p>Such a solution is not desired as the resulting material model would have many material parameters and would be physically uninterpretable.
+Further, the resulting model shown above is not physically admissible,
+which can be proven by calculating the strain energy density along specific deformation paths (see <code>model_requirements.py</code>).
+Hence, in <code>applyPenaltyLpIteration</code> the penalty factor <code>penaltyLp</code> is successively increased until the physical requirements are fulfilled.
+This procedure finally results in:</p>
+<pre><code class="language-Matlab">-----------------------------------------------------
+Apply Lp-norm penalty.
+Lp-norm penalty factor:  0.0125
+Lp-norm: p= 0.25
+Number of initial guesses: 1
+
+Solution with the lowest cost:
+[ 4.97871855e-01 -5.74695560e-05  0.00000000e+00  0.00000000e+00
+  0.00000000e+00  7.35505936e-05  0.00000000e+00  0.00000000e+00
+  0.00000000e+00  0.00000000e+00  0.00000000e+00  0.00000000e+00
+ -7.84065373e-06  0.00000000e+00  0.00000000e+00  0.00000000e+00
+  0.00000000e+00  0.00000000e+00  0.00000000e+00  0.00000000e+00
+  0.00000000e+00  0.00000000e+00  0.00000000e+00  0.00000000e+00
+  0.00000000e+00  0.00000000e+00  0.00000000e+00  0.00000000e+00
+  0.00000000e+00  0.00000000e+00  0.00000000e+00  0.00000000e+00
+  0.00000000e+00  0.00000000e+00  0.00000000e+00  1.49898747e+00
+  0.00000000e+00  0.00000000e+00  0.00000000e+00  0.00000000e+00
+  0.00000000e+00  0.00000000e+00  0.00000000e+00]
+-----------------------------------------------------
+</code></pre>
+<p>It can be seen that the material parameters have been shrunk, and the physical requirements are now fulfilled.
+After a final postprocessing step, in which parameters with absolute value below a <code>threshold</code> are set to zero, a sparse material parameter vector is found.</p>
+<pre><code class="language-Matlab">-----------------------------------------------------
+Apply threshold:  0.01
+
+Converged after iteration: 1
+Solution:
+[0.50052861 0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         0.
+ 0.         0.         0.         0.         0.         1.49892849
+ 0.         0.         0.         0.         0.         0.
+ 0.        ]
+-----------------------------------------------------
+</code></pre>
+<p>The resulting material model has hence a small amount of material parameters and is physically interpretable.
+It is observed that EUCLID identifies the correct features of the Neo-Hookean material model.
+The material parameter values vary only slightly compared to the true parameters as a consequence of the noise added to the displacement data.</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../code/config/" class="btn btn-neutral float-right" title="config">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../code_data/" class="btn btn-neutral" title="Code/Data"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../code_data/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../code/config/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

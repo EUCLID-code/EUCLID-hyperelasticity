@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://pyeuclid.github.io/code/models/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>models - EUCLID / Hyperelasticity</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "models";
+    var mkdocs_page_input_path = "code\\models.md";
+    var mkdocs_page_url = "/code/models/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> EUCLID / Hyperelasticity</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../contact/">Contact</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../publication/">Publication</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../code_data/">Code/Data</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../example_hyperelasticity/">Example</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Code</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../config/">config</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../dataDefinitions/">dataDefinitions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../features/">features</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../helper/">helper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../loadFemData/">loadFemData</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../main/">main</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">models</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../models_Lp/">models_Lp</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../models_requirements/">models_requirements</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../models_weak/">models_weak</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../utilities/">utilities</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">EUCLID / Hyperelasticity</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Code &raquo;</li>
+        
+      
+    
+    <li>models</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h4 id="applythresholdlhsrhsthetac"><code>applyThreshold(LHS,RHS,theta,c):</code></h4>
+<p>Apply the threshold algorithm to the given linear system to enforce sparsity on the solution vector theta.</p>
+<p><em>Input Arguments</em></p>
+<ul>
+<li>
+<p><code>LHS</code> - left hand side of symmetric linear system</p>
+</li>
+<li>
+<p><code>RHS</code> - right hand side of symmetric linear system</p>
+</li>
+<li>
+<p><code>theta</code> - material parameters</p>
+</li>
+<li>
+<p><code>c</code> - see <code>config</code></p>
+</li>
+</ul>
+<p><em>Output Arguments</em></p>
+<ul>
+<li><code>theta</code> - material parameters</li>
+</ul>
+<hr />
+<h4 id="computedoublecontractionab"><code>computeDoubleContraction(A,B):</code></h4>
+<p>Double contraction in Voigt notation.</p>
+<p><em>Input Arguments</em></p>
+<ul>
+<li>
+<p><code>A</code> - vector containing components of a 2x2 matrix ([A_11 A_12 A_21 A_22])</p>
+</li>
+<li>
+<p><code>B</code> - vector containing components of a 2x2 matrix ([B_11 B_12 B_21 B_22])</p>
+</li>
+</ul>
+<p><em>Output Arguments</em></p>
+<ul>
+<li><code>C</code> - scalar value of the double contraction</li>
+</ul>
+<hr />
+<h4 id="computelpnormvectorp"><code>computeLpNorm(vector,p):</code></h4>
+<p>Compute the Lp-regularization term for a given vector.</p>
+<p><em>Input Arguments</em></p>
+<ul>
+<li>
+<p><code>vector</code></p>
+</li>
+<li>
+<p><code>p</code> - type of the Lp-regularization term</p>
+</li>
+</ul>
+<p><em>Output Arguments</em></p>
+<ul>
+<li><code>norm</code></li>
+</ul>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../models_Lp/" class="btn btn-neutral float-right" title="models_Lp">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../main/" class="btn btn-neutral" title="main"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../main/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../models_Lp/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+site_name: EUCLID / Hyperelasticity
+site_url: https://pyeuclid.github.io/
+nav:
+    - Home: index.md
+    - Contact: contact.md
+    - Publication: publication.md
+    - Code/Data: code_data.md
+    - Example: example_hyperelasticity.md
+    - Code:
+        - config: code/config.md
+        - dataDefinitions: code/dataDefinitions.md
+        - features: code/features.md
+        - helper: code/helper.md
+        - loadFemData: code/loadFemData.md
+        - main: code/main.md
+        - models: code/models.md
+        - models_Lp: code/models_Lp.md
+        - models_requirements: code/models_requirements.md
+        - models_weak: code/models_weak.md
+        - utilities: code/utilities.md
+theme: readthedocs

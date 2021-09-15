@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="canonical" href="https://pyeuclid.github.io/code/models_weak/">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>models_weak - EUCLID / Hyperelasticity</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../../css/theme.css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "models_weak";
+    var mkdocs_page_input_path = "code\\models_weak.md";
+    var mkdocs_page_url = "/code/models_weak/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> EUCLID / Hyperelasticity</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../contact/">Contact</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../publication/">Publication</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../code_data/">Code/Data</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../../example_hyperelasticity/">Example</a>
+                    </li>
+                </ul>
+                <p class="caption"><span class="caption-text">Code</span></p>
+                <ul class="current">
+                    <li class="toctree-l1"><a class="reference internal" href="../config/">config</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../dataDefinitions/">dataDefinitions</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../features/">features</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../helper/">helper</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../loadFemData/">loadFemData</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../main/">main</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../models/">models</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../models_Lp/">models_Lp</a>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../models_requirements/">models_requirements</a>
+                    </li>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">models_weak</a>
+    <ul class="current">
+    </ul>
+                    </li>
+                    <li class="toctree-l1"><a class="reference internal" href="../utilities/">utilities</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">EUCLID / Hyperelasticity</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Code &raquo;</li>
+        
+      
+    
+    <li>models_weak</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h4 id="assemblebdataelec"><code>assembleB(data,ele,c):</code></h4>
+<p>Define a matrix (B-matrix) such that the gradient of the test functions can be expressed as a product of the B-matrix and the nodal values of the test functions.</p>
+<p><em>Input Arguments</em></p>
+<ul>
+<li>
+<p><code>data</code></p>
+</li>
+<li>
+<p><code>ele</code> - element number</p>
+</li>
+<li>
+<p><code>c</code> - see <code>config</code></p>
+</li>
+</ul>
+<p><em>Output Arguments</em></p>
+<ul>
+<li><code>B_element</code> - B-matrix</li>
+</ul>
+<hr />
+<h4 id="assemblefeaturederivativedataele"><code>assembleFeatureDerivative(data,ele):</code></h4>
+<p>Apply chain rule to calculate feature derivatives at element level.</p>
+<p><em>Input Arguments</em></p>
+<ul>
+<li>
+<p><code>data</code></p>
+</li>
+<li>
+<p><code>ele</code> - element number</p>
+</li>
+</ul>
+<p><em>Output Arguments</em></p>
+<ul>
+<li><code>d_features_dF_element</code> - derivative at element level</li>
+</ul>
+<hr />
+<h4 id="assembleglobalmatrixmatrix_globalmatrix_elementconnectivityelec"><code>assembleGlobalMatrix(matrix_global,matrix_element,connectivity,ele,c):</code></h4>
+<p>Add a matrix defined at an element to the corresponding position in the global matrix.</p>
+<p><em>Input Arguments</em></p>
+<ul>
+<li>
+<p><code>matrix_global</code> - global matrix</p>
+</li>
+<li>
+<p><code>matrix_element</code> - matrix at element level</p>
+</li>
+<li>
+<p><code>connectivity</code> - contains connectivity information of the elements</p>
+</li>
+<li>
+<p><code>ele</code> - element number</p>
+</li>
+<li>
+<p><code>c</code> - see <code>config</code></p>
+</li>
+</ul>
+<p><em>Output Arguments</em></p>
+<ul>
+<li><code>matrix_global</code> - updated global matrix</li>
+</ul>
+<hr />
+<h4 id="assembleglobalvectorvector_globalvector_elementconnectivityelec"><code>assembleGlobalVector(vector_global,vector_element,connectivity,ele,c):</code></h4>
+<p>Add a vector defined at an element to the corresponding position in the global vector.</p>
+<p><em>Input Arguments</em></p>
+<ul>
+<li>
+<p><code>vector_global</code> - global vector</p>
+</li>
+<li>
+<p><code>vector_element</code> - vector at element level</p>
+</li>
+<li>
+<p><code>connectivity</code> - contains connectivity information of the elements</p>
+</li>
+<li>
+<p><code>ele</code> - element number</p>
+</li>
+<li>
+<p><code>c</code> - see <code>config</code></p>
+</li>
+</ul>
+<p><em>Output Arguments</em></p>
+<ul>
+<li><code>vector_global</code> - updated global vector</li>
+</ul>
+<hr />
+<h4 id="computeinternalforcethetadatathetac"><code>computeInternalForceTheta(data,theta,c):</code></h4>
+<p>Compute nodal internal forces for given material parameters.</p>
+<p><em>Input Arguments</em></p>
+<ul>
+<li>
+<p><code>data</code></p>
+</li>
+<li>
+<p><code>theta</code> - material parameters</p>
+</li>
+<li>
+<p><code>c</code> - see <code>config</code></p>
+</li>
+</ul>
+<p><em>Output Arguments</em></p>
+<ul>
+<li><code>f_int_nodes</code> - internal force at each node</li>
+</ul>
+<hr />
+<h4 id="computestrainenergythetadatatheta"><code>computeStrainEnergyTheta(data,theta):</code></h4>
+<p>Compute strain energy density for given material parameters.</p>
+<p><em>Input Arguments</em></p>
+<ul>
+<li>
+<p><code>data</code></p>
+</li>
+<li>
+<p><code>theta</code> - material parameters</p>
+</li>
+</ul>
+<p><em>Output Arguments</em></p>
+<ul>
+<li>
+<p><code>Psi</code> - strain energy density at each element</p>
+</li>
+<li>
+<p><code>Psi_total</code> - total strain energy density</p>
+</li>
+</ul>
+<hr />
+<h4 id="computeweaklhsdatac"><code>computeWeakLHS(data,c):</code></h4>
+<p>Compute left hand side of overdetermined linear system for given data.
+Reaction forces are not consider yet.</p>
+<p><em>Input Arguments</em></p>
+<ul>
+<li>
+<p><code>data</code></p>
+</li>
+<li>
+<p><code>c</code> - see <code>config</code></p>
+</li>
+</ul>
+<p><em>Output Arguments</em></p>
+<ul>
+<li><code>LHS</code> - left hand side of overdetermined linear system</li>
+</ul>
+<hr />
+<h4 id="computeweakoverdetermineddatac"><code>computeWeakOverdetermined(data,c):</code></h4>
+<p>Compute left and right hand side of the internal-external force
+balance (weak formulation) at all free and fixed degrees of freedom.</p>
+<p><em>Input Arguments</em></p>
+<ul>
+<li>
+<p><code>data</code></p>
+</li>
+<li>
+<p><code>c</code> - see <code>config</code></p>
+</li>
+</ul>
+<p><em>Output Arguments</em></p>
+<ul>
+<li>
+<p><code>LHS_free</code> - left hand side of non-symmetric linear system</p>
+</li>
+<li>
+<p><code>RHS_free</code> - right hand side of non-symmetric linear system</p>
+</li>
+<li>
+<p><code>LHS_fix</code> - left hand side of non-symmetric linear system</p>
+</li>
+<li>
+<p><code>RHS_fix</code> - right hand side of non-symmetric linear system</p>
+</li>
+</ul>
+<hr />
+<h4 id="considerreactionglobaldatalhsc"><code>considerReactionGlobal(data,LHS,c):</code></h4>
+<p>Given overdetermined linear system, add information from global reaction forces.</p>
+<p><em>Input Arguments</em></p>
+<ul>
+<li>
+<p><code>data</code></p>
+</li>
+<li>
+<p><code>LHS</code> - left hand side of symmetric linear system</p>
+</li>
+<li>
+<p><code>c</code> - see <code>config</code></p>
+</li>
+</ul>
+<p><em>Output Arguments</em></p>
+<ul>
+<li>
+<p><code>LHS</code> - updated left hand side of symmetric linear system</p>
+</li>
+<li>
+<p><code>RHS</code> - right hand side of symmetric linear system</p>
+</li>
+</ul>
+<hr />
+<h4 id="extendlhsrhsdataclhsrhs"><code>extendLHSRHS(data,c,LHS,RHS):</code></h4>
+<p>Given symmetric linear system, add information from additional data.</p>
+<p><em>Input Arguments</em></p>
+<ul>
+<li>
+<p><code>data</code></p>
+</li>
+<li>
+<p><code>c</code> - see <code>config</code></p>
+</li>
+<li>
+<p><code>LHS</code> - left hand side of symmetric linear system</p>
+</li>
+<li>
+<p><code>RHS</code> - right hand side of symmetric linear system</p>
+</li>
+</ul>
+<p><em>Output Arguments</em></p>
+<ul>
+<li>
+<p><code>LHS</code> - updated left hand side of symmetric linear system</p>
+</li>
+<li>
+<p><code>RHS</code> - updated right hand side of symmetric linear system</p>
+</li>
+</ul>
+<hr />
+<h4 id="zippermatrix"><code>zipper(matrix):</code></h4>
+<p>Take a Nx2 matrix and assemble a 2Nx1 vector of the same type.</p>
+<p><em>Input Arguments</em></p>
+<ul>
+<li><code>matrix</code></li>
+</ul>
+<p><em>Output Arguments</em></p>
+<ul>
+<li><code>vector</code></li>
+</ul>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../utilities/" class="btn btn-neutral float-right" title="utilities">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../models_requirements/" class="btn btn-neutral" title="models_requirements"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../models_requirements/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../utilities/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
