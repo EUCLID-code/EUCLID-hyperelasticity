@@ -16,7 +16,7 @@ noiseLevel = 0.0001
 Here, `noiseLevelData` is set to zero meaning that we want to load data that has not yet been corrupted by noise
 and `noiseLevel` is set to be greater than zero as artificial noise should be added to that data.
 We have to make sure that `femDataPath` describes the correct path pointing to the finite element data.
-Higher resolution data can be downloaded from the <a href="https://www.research-collection.ethz.ch/handle/20.500.11850/481215" target="_blank">ETH Research Collection</a>.
+Higher resolution data can be downloaded from the <a href="https://www.research-collection.ethz.ch/handle/20.500.11850/505693" target="_blank">ETH Research Collection</a>.
 
 After specifying which data to use, the hyperparameters for EUCLID are chosen.
 ```Python
