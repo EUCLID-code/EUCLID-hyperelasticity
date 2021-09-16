@@ -1,4 +1,3 @@
-# EUCLID applied to Hyperelasticity
 EUCLID (Efficient Unsupervised Constitutive Law Identification & Discovery) is here applied to discover strain energy density functions of hyperelastic materials.
 
 ![Schematic of EUCLID](./mkdocs/site/img/schematics-hyperelasticity.png)
