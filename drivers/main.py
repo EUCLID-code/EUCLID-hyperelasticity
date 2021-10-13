@@ -3,6 +3,9 @@
 #=====================================================================
 #sys and core
 import sys
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+
 sys.path.insert(0, "../")
 from core import *
 #config
