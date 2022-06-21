@@ -1,5 +1,5 @@
 site_name: EUCLID / Hyperelasticity
-site_url: https://pyeuclid.github.io/
+site_url: https://euclid-code.github.io/
 nav:
     - Home: index.md
     - Publication: publication.md
