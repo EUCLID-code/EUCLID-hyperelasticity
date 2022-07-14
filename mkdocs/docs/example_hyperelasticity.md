@@ -34,7 +34,7 @@ For this example, we choose only one initial guess for the minimization probem
 and the threshold below which material parameters should be discarded is defined as `threshold = 1e-2`. 
 
 ## Discovery
-Executing `main_Lp.py` starts the material model discovery process.
+Executing `main.py` starts the material model discovery process.
 The parameters defined in `config.py` are loaded as `import config as c`.
 A loop over all load steps is defined and for each load step, the finite element data is loaded and perturbed by the specified noise.
 ```Python
