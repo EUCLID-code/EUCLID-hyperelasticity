@@ -20,12 +20,6 @@ from scipy import sparse
 #pandas
 import pandas as pd
 
-#pyro
-import pyro
-
-#pymc3
-import pymc3 as pm
-
 #others:
 import os
 import sys
