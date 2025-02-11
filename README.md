@@ -17,3 +17,6 @@ The documentation can be browsed by using the search box.
 The provided _example_ helps to understand the workflow of EUCLID, it can be executed using the code and data provided on <a href="https://github.com/EUCLID-code/EUCLID-hyperelasticity" target="_blank">GitHub</a>.
 The data used in the [publication](https://EUCLID-code.github.io/EUCLID-hyperelasticity/mkdocs/site/publication/) can be downloaded from the <a href="https://www.research-collection.ethz.ch/handle/20.500.11850/505693" target="_blank">ETH Research Collection</a>.
 
+# Minimal working example
+The Jupyter notebook `EUCLID_hyperelasticity_example.ipynb` contains a minimal working example of EUCLID. We recommend executing the notebook on Google Colab to use the server installations of the required Python libraries (e.g., torch).  
+
